@@ -8,17 +8,13 @@ app.secret_key = "Hiqshagiq@5352r2gsbgdsk"
 
 @app.route('/')
 def index():
-    if 'username' in session:
-        return render_template("index.html")
-    else:
-        redirect(url_for(login))
+    return render_template("index.html")
 
 @app.route('/shop')
 def shop():
     if 'username' in session:
         return render_template("shop.html")
-    else:
-        redirect(url_for(login))
+
 
 @app.route('/contact')
 def contact():
