@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyAccount</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='p.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="card">
+        <form action="" method="post">
+        <div class="row">
+                    <div class ="formation"  >
+                    <div class="container">
+                        <input type="file" id="file" name="image" style="display: none;" >
+            
+            <div class="img-area" data-img="">
+                <i class='bx bxs-cloud-upload icon'></i>
+                <h3>Upload Image</h3>
+                <p>Image size must be less than <span>2MB</span></p>
+            </div>
+            
+            <div class="button-container">
+                <label for="fileInput" id="input-label-text" class="file-button">
+                    Choose a File
+                    <input
+                        id="fileInput"
+                        type="file"
+                        accept="image/*"
+                        name="image"
+                        style="display: none;"
+                    />
+                </label>
+            </div>
+        </div>
+            </div>
+            
+            <div class="labels">
+                <div>
+                    <div>
+                        <h4 id="title">Profile Settings:</h4>
+                    </div>
+                    <div class="labels">
+                            
+                            <input id="input2" type="text" placeholder="Name" value="">
+                            
+                            <input id="input2" type="text" placeholder="Username" value="">
+                                                        
+                            <input id="input2" type="text" placeholder="Email" value="">
+                        </div>
+                    </div>
+                    <div>
+                        <button id="save">
+                            <span class="button__text">Save Profile</span>
+                        </button>	
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+    </div>
+</body>
+</html>
