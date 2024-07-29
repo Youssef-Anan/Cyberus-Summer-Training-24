@@ -8,31 +8,27 @@ app.secret_key = "Hiqshagiq@5352r2gsbgdsk"
 
 @app.route('/')
 def index():
-    if 'username' in session:
-        return render_template("index.html")
-    else:
-        redirect(url_for(login))
+    
+    return render_template("index.html")
+    
 
 @app.route('/shop')
 def shop():
-    if 'username' in session:
-        return render_template("shop.html")
-    else:
-        redirect(url_for(login))
+    
+    return render_template("shop.html")
+    
 
 @app.route('/contact')
 def contact():
-    if 'username' in session:
-        return render_template("contact.html")
-    else:
-        redirect(url_for(login))
+    
+    return render_template("contact.html")
+    
 
 @app.route('/game')
 def game():
-    if 'username' in session:
-        return render_template("product-details.html")
-    else:
-        redirect(url_for(login))
+    
+    return render_template("product-details.html")
+    
 
 @app.route('/register', methods=['GET','POST'])
 def register():
