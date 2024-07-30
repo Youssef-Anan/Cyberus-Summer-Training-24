@@ -85,12 +85,12 @@ def logout():
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
+    print(session.get('username'))
     if request.method == 'POST':
-        username = "anan"
+        username = session.get('username')
         new_username = request.form['user']
         new_email = request.form['email']
         pfpImage = request.files.get('image')
-
         pfp_url = None
         if pfpImage and pfpImage.filename != '':
             pfp_url = f"uploads/{pfpImage.filename}"
@@ -98,7 +98,7 @@ def profile():
 
         # Call the edit_user function
         db.edit_user(connection, username, new_username, new_email, pfp_url)
-                
+        session['username'] = new_username
         flash('Profile updated successfully!', 'success')
         return redirect(url_for('profile'))
 

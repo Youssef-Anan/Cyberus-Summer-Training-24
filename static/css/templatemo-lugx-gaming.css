@@ -300,7 +300,7 @@ Header Style
 }
 
 .background-header .logo img {
-  max-width: 110px;
+  max-width: 50px;
 }
 
 .header-area {
@@ -1667,7 +1667,16 @@ body {
     margin-top: 45px;
   }
 }
+.profile-icon {
+  vertical-align: middle; /* Aligns the icon vertically */
+  margin-right: 5px; /* Adds some space between the icon and the text */
+  display: inline-block; /* Ensures the icon behaves like an inline element */
+}
 
+.username {
+  display: inline-block; /* Ensures the username behaves like an inline element */
+  vertical-align: middle; /* Aligns the text vertically */
+}
 @media (max-width: 1200px) {
   
 }

@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <title>Skai Gaming</title>
 
     <!-- Bootstrap core CSS -->
@@ -34,34 +36,44 @@
   <!-- ***** Preloader End ***** -->
 
   <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <img src="static/images/logo.png" alt="" style="width: 158px;">
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                      <li><a href="" class="active">Home</a></li>
-                      <li><a href="shop">Our Shop</a></li>
-                      <li><a href="game">Product Details</a></li>
-                      <li><a href="contact">Contact Us</a></li>
-                      <li><a href="login">Sign In</a></li>
-                  </ul>  
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
-    </div>
+    <header class="header-area header-sticky">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <nav class="main-nav">
+                      <!-- ***** Logo Start ***** -->
+                      <a href="/" class="logo">
+                          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" style="width: 158px;">
+                      </a>
+                      <!-- ***** Logo End ***** -->
+                      <!-- ***** Menu Start ***** -->
+                      <ul class="nav">
+                          <li><a href="/" >Home</a></li>
+                          <li><a href="{{ url_for('shop') }}" class="active">Our Shop</a></li>
+                          <li><a href="{{ url_for('game') }}">Product Details</a></li>
+                          <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+                          {% if session.get('username') %}
+                            <li>
+                              <a href="{{ url_for('profile') }}">
+                                  <i class='bx bxs-user-circle profile-icon' style="font-size: 24px;"></i>
+                                  <span class="username">{{ session['username'] }}</span>
+                              </a>
+                            </li> 
+                          {% else %}
+                              <li><a href="{{ url_for('login') }}">Sign In</a></li>
+                          {% endif %}
+                      </ul>
+                      <a class='menu-trigger'>
+                          <span>Menu</span>
+                      </a>
+                      <!-- ***** Menu End ***** -->
+                  </nav>
+              </div>
+          </div>
+      </div>
   </header>
-  <!-- ***** Header Area End ***** -->
+    <!-- ***** Header Area End ***** -->
+
 
   <div class="page-heading header-text">
     <div class="container">
