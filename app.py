@@ -4,6 +4,8 @@ import os
 import utils
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+import validators
+import re
 
 app = Flask(__name__)
 connection = db.connect_to_database()
@@ -107,6 +109,38 @@ def profile():
         user = db.get_user(connection, username)
         return render_template('profile.html', user=user)
     return redirect(url_for('login'))
+
+
+@app.route('/admin/add-games', methods=['POST', 'GET'])
+def add_game():
+    if not(session['username']=="admin"):
+        flash("You are not an admin", "danger")
+        return redirect(url_for('index'))
+    else:
+        if(request.method == 'POST'):
+            title = request.form['title']
+            description = request.form['description']
+            price = request.form['price']
+            Image = request.form['image']
+            if not Image or Image.filename == '':
+                flash("Image is required", "danger")
+                return add_game("AddGame.html")
+            if not (validators.allowed_file(Image.filename)) or not validators.allowed_file_size(Image):
+                flash("Invalid file is uploaded", "danger")
+                return render_template("AddGame.html")
+            image_url=f"static/uploads/{Image.filename}"
+            Image.save(os.path.join(image_url))
+            db.add_game(connection, title, description, price, image_url)
+            flash("successfully added", "success")
+    return render_template('AddGame.html')
+
+
+
+
+
+
+
+
 
 if __name__ == '__main__':
     db.init_db(connection)
