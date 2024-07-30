@@ -1,3 +1,4 @@
+import utils
 def connect_to_database(name='database.db'):
     import sqlite3
     return sqlite3.connect(name, check_same_thread=False)
@@ -17,8 +18,9 @@ def init_db(connection):
 
 def add_user(connection, username, password, email):
     cursor = connection.cursor()
+    hashed_password = utils.hash_password(password)
     query = '''INSERT INTO users (username, password, email) VALUES (?, ?, ?)'''
-    cursor.execute(query,(username, password, email))
+    cursor.execute(query,(username, hashed_password, email))
     connection.commit()
 
 def get_user(connection, username):
