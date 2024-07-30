@@ -1,171 +1,120 @@
-html,body{
-    padding: 0px;
-    margin:0px;
-    background: linear-gradient(90deg, #C7C5F4, #776BCC);
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Jost', sans-serif;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.card{
+* {
+    box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
+}
+
+.card {
     background-color: white;
     border-radius: 20px;
-    display: grid;
-    place-content: center;
     width: 390px;
-    height: 700px;
-    position: relative;
-    left: 41%;
-    margin-top: 150px;
-
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
-
 
 .img-area {
     position: relative;
     width: 100%;
     height: 240px;
     background: var(--grey);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     border-radius: 15px;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
- }
- .img-area .icon {
+}
+
+.img-area .icon {
     font-size: 100px;
- }
- .img-area h3 {
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 6px;
- }
- .img-area p {
-    color: #999;
- }
- .img-area p span {
-    font-weight: 600;
- }
- .img-area img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 100;
- }
- .img-area::before {
-    content: attr(data-img);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, .5);
-    color: #fff;
-    font-weight: 500;
-    text-align: center;
+}
+
+.profile-icon {
+    color: #302b63; /* Change this to your desired color */
+}
+
+.file-button {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    pointer-events: none;
-    opacity: 0;
-    transition: all .3s ease;
-    z-index: 200;
- }
- .img-area.active:hover::before {
-    opacity: 1;
- }
- .select-image {
-    display: block;
-    width: 100%;
-    padding: 16px 0;
-    border-radius: 15px;
-    background:#EC4899;
+    justify-content: center;
+    background-color: #302b63;
     color: #fff;
-    font-weight: 500;
-    font-size: 16px;
     border: none;
     cursor: pointer;
-    transition: all .3s ease;
- }
- .select-image:hover {
-    background: pink;
- }
+    transition: background-color 0.3s ease;
+    padding: 15px;
+    border-radius: 15px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
- #but{
-    background: linear-gradient(90deg,  #776BCC,#C7C5F4);
-    border-color: black;
-    
-    
-    }
+.file-button:hover {
+    background-color: #573b8a;
+}
 
-    .file-button {
-        display: flex;
-        flex-direction: column; /* Stack the text and input vertically */
-        align-items: center; /* Center horizontally */
-        justify-content: center; /* Center vertically */
-        /* Add any other styling you want for the button label */        background: linear-gradient(90deg,  #776BCC,#C7C5F4);
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        padding: 20px;
-        color: white;
-        border-style: none;
-        border-radius: 15px;
-        width: 240px;
-    }
-    
-    .button-container {
-        display: flex;
-        justify-content: center; /* Horizontally center the content */
-        align-items: center; /* Vertically center the content */
-        /* Add any other styling you want for the container */
-    }
+.form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#title {
+    margin-bottom: 20px;
+    color: #302b63;
+}
 
 .labels {
+    width: 100%;
     display: flex;
-    flex-direction:column;
-    justify-content:flex-start;
-    text-align:left;
-    line-height: 20px;
-
-}
-.labels.inpu{
-    size: 90px;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
-
-.form-control {
-    margin-bottom: 10px
-}
-
-#input2{
+#input2 {
+    width: calc(100% - 18px);
     border-radius: 9px;
     padding: 12px;
-    border-width: 1px;
-    border-color: #999 ;
-    margin: 9px;
-    border: none; /* Remove the default border */
-            border-bottom: 2px solid transparent; /* Add a transparent bottom border */
-            border-image-source: linear-gradient(to right, #C7C5F4, #776BCC); /* Gradient colors */
-            border-image-slice: 1; /* Slice the gradient evenly */
-            outline: none; /* Remove the focus outline */
+    border: 1px solid #999;
+    margin: 0 auto;
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-image-source: linear-gradient(to right, #302b63, #302b63);
+    border-image-slice: 1;
+    outline: none;
+    transition: border-color 0.3s ease;
 }
 
-#save{
-    background: linear-gradient(90deg,  #776BCC,#C7C5F4);
-    padding: 20px;
+#input2:focus {
+    border-bottom: 2px solid #302b63;
+}
+
+#save {
+    background-color: #302b63;
+    padding: 15px;
     color: white;
     border-style: none;
     border-radius: 15px;
-    width: 280px;
-    height: 50px;
-    margin: 12px;
+    width: 100%;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
-#title{
-    padding-left: 32%;
+
+#save:hover {
+    background-color: #573b8a;
 }

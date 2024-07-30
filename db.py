@@ -10,7 +10,8 @@ def init_db(connection):
         username TEXT NOT NULL UNIQUE,
         password TEXT NOT NULL,
         email TEXT NOT NULL,
-        balance REAL NOT NULL DEFAULT 0.0
+        balance REAL NOT NULL DEFAULT 0.0,
+        pfp_url TEXT
     )
 ''')
     connection.commit()
@@ -26,3 +27,10 @@ def get_user(connection, username):
     query = '''SELECT * FROM users WHERE username = ?'''
     cursor.execute(query,(username,))
     return cursor.fetchone()
+
+def edit_user(connection, username, Nuser, Nemail,pfp_url):
+    cursor = connection.cursor()
+    query = '''UPDATE users SET username = ?, email = ?, pfp_url = ? WHERE username = ?'''
+    cursor.execute(query, (Nuser, Nemail, pfp_url, username))
+    connection.commit()
+    print("User data updated successfully")
