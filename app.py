@@ -30,7 +30,8 @@ def contact():
 
 @app.route('/game')
 def game():
-    return render_template("product-details.html")
+    game = db.get_game(connection, 1)
+    return render_template("product-details.html",game = game)
     
 
 @app.route('/register', methods=['GET','POST'])
@@ -121,7 +122,7 @@ def add_game():
             title = request.form['title']
             description = request.form['description']
             price = request.form['price']
-            Image = request.form['image']
+            Image = request.files.get('image')
             if not Image or Image.filename == '':
                 flash("Image is required", "danger")
                 return add_game("AddGame.html")
@@ -144,4 +145,5 @@ def add_game():
 
 if __name__ == '__main__':
     db.init_db(connection)
+    db.init_game_table(connection)
     app.run(debug=True, port=80)

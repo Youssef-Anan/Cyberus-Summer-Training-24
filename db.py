@@ -60,6 +60,12 @@ def init_game_table(connection):
     ''')
     connection.commit()
 
+def get_game(connection, id):
+    cursor = connection.cursor()
+    query = '''SELECT * FROM users WHERE id = ?'''
+    cursor.execute(query,(id,))
+    return cursor.fetchone()
+
 def add_game(connection, title, description, price, image_url=None):
     cursor = connection.cursor()
     query = ''' INSERT INTO games (title, description, price, image_url) VALUES (?, ?, ?, ?)'''
